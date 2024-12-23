@@ -1,0 +1,6 @@
+@MascotasAPI_HostAddress = http://localhost:5171
+
+GET {{MascotasAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
