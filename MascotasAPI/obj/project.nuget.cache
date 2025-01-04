@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qVpsXZSddh8=",
+  "dgSpecHash": "9qw3eaMBIVw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\MascotasAPI.csproj",
+  "projectFilePath": "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Corne\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Corne\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
