@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MascotasList from './components/MascotasList';
+import AddMascota from './components/AddMascota';
 
 const App = () => {
+    const [mascotas, setMascotas] = useState([]);
+
+    const handleMascotaAdded = (newMascota) => {
+        setMascotas((prevMascotas) => [...prevMascotas, newMascota]);
+    };
+
     return (
         <div className="App">
-            <MascotasList />
+            <AddMascota onMascotaAdded={handleMascotaAdded} />
+            <MascotasList mascotas={mascotas} setMascotas={setMascotas} />
         </div>
     );
 };
