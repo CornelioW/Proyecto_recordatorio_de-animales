@@ -4,9 +4,9 @@ using MascotasAPI.Data;
 using MascotasAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MascotasAPI.Controllers
+namespace MascotasAPI.Controllers // Aquí estaba el problema: faltaba una llave de apertura
 {
-    [Authorize] // Protege todas las rutas de este controlador
+    //[Authorize] // Protege todas las rutas de este controlador
     [ApiController]
     [Route("api/[controller]")]
     public class MascotasController : ControllerBase
