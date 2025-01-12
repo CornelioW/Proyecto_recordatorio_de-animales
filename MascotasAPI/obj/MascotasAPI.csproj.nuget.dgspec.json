@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\MascotasAPI.csproj": {}
+    "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\MascotasAPI.csproj": {
+    "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\MascotasAPI.csproj",
+        "projectUniqueName": "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
         "projectName": "MascotasAPI",
-        "projectPath": "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\MascotasAPI.csproj",
+        "projectPath": "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
         "packagesPath": "C:\\Users\\Corne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Corne\\OneDrive - Instituto Tecnologico Internacional\\Programación\\ITI\\Modulo 7\\Programacion de aplicaciones web y mobiles\\Proyecto_recordatorio_de animales\\MascotasAPI\\obj\\",
+        "outputPath": "C:\\Proyecto_recordatorio_de-animales\\MascotasAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Corne\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,9 +43,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.11, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
