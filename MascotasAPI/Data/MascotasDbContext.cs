@@ -10,6 +10,6 @@ namespace MascotasAPI.Data
         }
 
         public DbSet<Mascota> Mascotas { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; } // Agregado para la tabla Usuarios
     }
 }
