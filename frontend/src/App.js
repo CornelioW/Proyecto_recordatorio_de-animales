@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Inicio from './components/Inicio';
+import AuthForm from './components/AuthForm'; // Importamos el componente combinado
 import MascotasList from './components/MascotasList';
 import AddMascota from './components/AddMascota';
 
@@ -15,11 +15,16 @@ const App = () => {
         <Router>
             <div className="App">
                 <Routes>
-                    <Route path="/" element={<Inicio />} />
+                    {/* Ruta inicial: login/registro */}
+                    <Route path="/" element={<AuthForm />} />
+
+                    {/* Ruta para la lista de mascotas */}
                     <Route
                         path="/mascotas"
                         element={<MascotasList mascotas={mascotas} setMascotas={setMascotas} />}
                     />
+
+                    {/* Ruta para agregar mascota */}
                     <Route
                         path="/agregar-mascota"
                         element={<AddMascota onMascotaAdded={handleMascotaAdded} />}
@@ -31,4 +36,3 @@ const App = () => {
 };
 
 export default App;
-
