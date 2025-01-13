@@ -22,7 +22,7 @@ const MascotasList = ({ mascotas, setMascotas }) => {
         }
 
         try {
-            await api.delete(`/mascotas/${id}`);
+            await api.delete(`/mascotas/${id}`); // Aquí está la corrección
             setMascotas((prevMascotas) =>
                 prevMascotas.filter((mascota) => mascota.id !== id)
             );
@@ -30,6 +30,7 @@ const MascotasList = ({ mascotas, setMascotas }) => {
             console.error('Error borrando mascota:', error);
         }
     };
+
 
 
     return (
@@ -48,4 +49,3 @@ const MascotasList = ({ mascotas, setMascotas }) => {
 };
 
 export default MascotasList;
-
