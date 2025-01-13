@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthForm from './components/AuthForm'; // Importamos el componente combinado
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import AuthForm from './components/AuthForm';
 import MascotasList from './components/MascotasList';
 import AddMascota from './components/AddMascota';
+
+const PrivateRoute = ({ children }) => {
+    const isAuthenticated = localStorage.getItem('token'); // Cambia esto según tu lógica de autenticación
+    return isAuthenticated ? children : <Navigate to="/" />;
+};
 
 const App = () => {
     const [mascotas, setMascotas] = useState([]);
@@ -18,17 +23,28 @@ const App = () => {
                     {/* Ruta inicial: login/registro */}
                     <Route path="/" element={<AuthForm />} />
 
-                    {/* Ruta para la lista de mascotas */}
+                    {/* Ruta protegida para la lista de mascotas */}
                     <Route
                         path="/mascotas"
-                        element={<MascotasList mascotas={mascotas} setMascotas={setMascotas} />}
+                        element={
+                            <PrivateRoute>
+                                <MascotasList mascotas={mascotas} setMascotas={setMascotas} />
+                            </PrivateRoute>
+                        }
                     />
 
-                    {/* Ruta para agregar mascota */}
+                    {/* Ruta protegida para agregar mascota */}
                     <Route
                         path="/agregar-mascota"
-                        element={<AddMascota onMascotaAdded={handleMascotaAdded} />}
+                        element={
+                            <PrivateRoute>
+                                <AddMascota onMascotaAdded={handleMascotaAdded} />
+                            </PrivateRoute>
+                        }
                     />
+
+                    {/* Ruta para manejar errores */}
+                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>
         </Router>

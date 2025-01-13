@@ -59,7 +59,19 @@ const AuthForm = () => {
     };
 
     return (
-        <div className="auth-container">
+        <div
+            className="auth-container"
+            style={{
+                backgroundImage: `url('/images/fondo.jpg')`, // Ruta absoluta desde public
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
             <form
                 onSubmit={(e) => e.preventDefault()} // Previene el submit automático
                 className="auth-form"
@@ -87,23 +99,19 @@ const AuthForm = () => {
                     />
                 </div>
                 <div className="auth-buttons">
-                    {/* Botón para registro */}
                     <button
                         type="button"
                         className="btn btn-register"
                         onClick={handleRegister}
                     >
-                        ¿Primera visita?
-                        Únete a nuestra comunidad
+                        ¿Primera visita? Únete a nuestra comunidad
                     </button>
-                    {/* Botón para inicio de sesión */}
                     <button
                         type="button"
                         className="btn btn-login"
                         onClick={handleLogin}
                     >
-                        ¿Ya registrado?
-                        Bienvenido de nuevo
+                        ¿Ya registrado? Bienvenido de nuevo
                     </button>
                 </div>
             </form>
