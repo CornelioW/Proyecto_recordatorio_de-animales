@@ -36,7 +36,7 @@ namespace MascotasAPI.Controllers
             return Ok("Usuario registrado con éxito.");
         }
 
-        // Inicio de sesión
+     
         [HttpPost("login")]
         public IActionResult Login([FromBody] Usuario usuario)
         {
@@ -46,23 +46,22 @@ namespace MascotasAPI.Controllers
                 return Unauthorized("Credenciales inválidas.");
             }
 
-            // Retornar éxito (puedes generar un JWT aquí)
+           
             return Ok(new { message = "Inicio de sesión exitoso" });
         }
 
-        // Obtener lista de usuarios
+   
         [HttpGet("usuarios")]
         public IActionResult GetUsuarios()
         {
             var usuarios = _context.Usuarios.ToList();
 
-            // Devuelve 204 si no hay usuarios registrados
+           
             if (!usuarios.Any())
             {
                 return NoContent();
             }
 
-            // Devuelve 200 OK con la lista de usuarios
             return Ok(usuarios);
         }
     }
