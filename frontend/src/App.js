@@ -24,7 +24,7 @@ const App = () => {
                     <Route path="/" element={<AuthForm />} />
 
                     {/* Ruta protegida para la lista de mascotas */}
-                    <Route
+                   <Route
                         path="/mascotas"
                         element={
                             <PrivateRoute>
