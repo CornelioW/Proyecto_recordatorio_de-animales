@@ -7,5 +7,9 @@ namespace MascotasAPI.Models
         public int? Edad { get; set; } // Edad opcional
         public string? Raza { get; set; } // Raza opcional
         public string Tipo { get; set; } = string.Empty; // Perro o Gato
+
+        // Relación con el Usuario
+        public int UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; } // Relación opcional
     }
 }

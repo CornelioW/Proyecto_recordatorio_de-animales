@@ -2319,11 +2319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Corne\\Desktop\\repos\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
+      "projectUniqueName": "C:\\Proyecto_recordatorio_de-animales ultimo punto estable\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
       "projectName": "MascotasAPI",
-      "projectPath": "C:\\Users\\Corne\\Desktop\\repos\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
+      "projectPath": "C:\\Proyecto_recordatorio_de-animales ultimo punto estable\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
       "packagesPath": "C:\\Users\\Corne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Corne\\Desktop\\repos\\Proyecto_recordatorio_de-animales\\MascotasAPI\\obj\\",
+      "outputPath": "C:\\Proyecto_recordatorio_de-animales ultimo punto estable\\Proyecto_recordatorio_de-animales\\MascotasAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Corne\\AppData\\Roaming\\NuGet\\NuGet.Config"

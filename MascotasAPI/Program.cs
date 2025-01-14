@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", builder =>
     {
         builder
-            .WithOrigins("http://localhost:3000") // Permitir el origen del frontend
+            .WithOrigins("http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -33,9 +33,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "TuIssuer", // Cambia esto por el valor correcto
-            ValidAudience = "TuAudience", // Cambia esto por el valor correcto
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TuClaveSecretaSuperSegura12345"))
+            ValidIssuer = builder.Configuration["Jwt:Issuer"], // Configurado en appsettings.json
+            ValidAudience = builder.Configuration["Jwt:Audience"], // Configurado en appsettings.json
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
 
