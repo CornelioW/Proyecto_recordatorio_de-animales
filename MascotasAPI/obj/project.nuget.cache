@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ci/FIjTj/mw=",
+  "dgSpecHash": "YreF5eq9tBo=",
   "success": true,
-  "projectFilePath": "C:\\Proyecto_recordatorio_de-animales\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
+  "projectFilePath": "C:\\Proyecto_recordatorio_de-animales ultimo punto estable\\Proyecto_recordatorio_de-animales\\MascotasAPI\\MascotasAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Corne\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Corne\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
