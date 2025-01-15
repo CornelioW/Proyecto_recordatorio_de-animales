@@ -2,11 +2,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MascotasAPI.Data;
 using MascotasAPI.Models;
-using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
-namespace MascotasAPI.Controllers // Aquí estaba el problema: faltaba una llave de apertura
+namespace MascotasAPI.Controllers
 {
-    //[Authorize] // Protege todas las rutas de este controlador
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class MascotasController : ControllerBase
@@ -20,80 +21,39 @@ namespace MascotasAPI.Controllers // Aquí estaba el problema: faltaba una llave
 
         // GET: api/Mascotas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Mascota>>> GetMascotas()
+        public IActionResult GetMascotas()
         {
-            return await _context.Mascotas.ToListAsync();
-        }
+            var userId = GetUsuarioId();
+            if (userId == null) return Unauthorized();
 
-        // GET: api/Mascotas/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Mascota>> GetMascota(int id)
-        {
-            var mascota = await _context.Mascotas.FindAsync(id);
+            var mascotas = _context.Mascotas
+                .Where(m => m.UsuarioId == userId)
+                .ToList();
 
-            if (mascota == null)
-            {
-                return NotFound();
-            }
-
-            return mascota;
+            return Ok(mascotas);
         }
 
         // POST: api/Mascotas
         [HttpPost]
-        public async Task<ActionResult<Mascota>> PostMascota(Mascota mascota)
+        public IActionResult PostMascota([FromBody] Mascota mascota)
         {
+            var userId = GetUsuarioId();
+            if (userId == null) return Unauthorized();
+
+            // Asignar automáticamente el UsuarioId desde el token JWT
+            mascota.UsuarioId = userId.Value;
+
             _context.Mascotas.Add(mascota);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetMascota), new { id = mascota.Id }, mascota);
+            return CreatedAtAction(nameof(GetMascotas), new { id = mascota.Id }, mascota);
         }
 
-        // DELETE: api/Mascotas/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMascota(int id)
+        // Método auxiliar para obtener el UsuarioId del token JWT
+        private int? GetUsuarioId()
         {
-            var mascota = await _context.Mascotas.FindAsync(id);
-
-            if (mascota == null)
-            {
-                return NotFound();
-            }
-
-            _context.Mascotas.Remove(mascota);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        // PUT: api/Mascotas/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateMascota(int id, Mascota mascota)
-        {
-            if (id != mascota.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(mascota).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Mascotas.Any(e => e.Id == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            return userIdClaim != null ? int.Parse(userIdClaim.Value) : null;
         }
     }
 }

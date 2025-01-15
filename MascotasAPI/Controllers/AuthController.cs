@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using MascotasAPI.Data;
 using MascotasAPI.Models;
 using BCrypt.Net;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MascotasAPI.Controllers
 {
@@ -10,10 +14,12 @@ namespace MascotasAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly MascotasDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(MascotasDbContext context)
+        public AuthController(MascotasDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // Registro de usuario
@@ -46,8 +52,30 @@ namespace MascotasAPI.Controllers
                 return Unauthorized("Credenciales inválidas.");
             }
 
-            // Retornar éxito (puedes generar un JWT aquí)
-            return Ok(new { message = "Inicio de sesión exitoso" });
+            // Generar token JWT
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _configuration["Jwt:Issuer"], // Agregado
+                Audience = _configuration["Jwt:Audience"] // Agregado
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            return Ok(new
+            {
+                message = "Inicio de sesión exitoso",
+                token = tokenString
+            });
         }
 
         // Obtener lista de usuarios
