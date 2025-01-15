@@ -1,76 +1,33 @@
-/* auth-container*/
 .auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('https://drive.google.com/drive/folders/1LPn0c_hP-K3hmiArhFJIobhFyEKgCDnS');
-    background-size: cover;
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que se repita */
-    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
 }
 
-/* auth-form: Diseño del formulario */
 .auth-form {
-    padding: 20px 30px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-/* Título */
-.auth-form h2 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #333;
-    font-weight: bold;
-}
-
-/* form-group: Campos del formulario */
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 20px;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* auth-buttons: Contenedor de botones */
 .auth-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    margin-top: 20px;
 }
 
-/* Botones */
 .btn {
-    flex: 1;
-    padding: 12px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* Botón de registro */
 .btn-register {
     background-color: #007bff;
     color: white;
@@ -78,14 +35,4 @@
 
 .btn-register:hover {
     background-color: #0056b3;
-}
-
-/* Botón de inicio de sesión */
-.btn-login {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-login:hover {
-    background-color: #1e7e34;
 }

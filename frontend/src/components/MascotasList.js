@@ -14,7 +14,7 @@ const MascotasList = ({ mascotas, setMascotas }) => {
 
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm(
-            "¿Estás seguro de que deseas eliminar esta mascota?"
+            '¿Estás seguro de que deseas eliminar esta mascota?'
         );
 
         if (!confirmDelete) {
@@ -31,8 +31,6 @@ const MascotasList = ({ mascotas, setMascotas }) => {
         }
     };
 
-
-
     return (
         <div>
             <h1>Lista de Mascotas</h1>
@@ -40,7 +38,9 @@ const MascotasList = ({ mascotas, setMascotas }) => {
                 {mascotas.map((mascota) => (
                     <li key={mascota.id}>
                         {mascota.nombre} - {mascota.tipo}
-                        <button onClick={() => handleDelete(mascota.id)}>Eliminar</button>
+                        <button onClick={() => handleDelete(mascota.id)}>
+                            Eliminar
+                        </button>
                     </li>
                 ))}
             </ul>

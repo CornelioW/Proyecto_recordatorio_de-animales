@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MascotasAPI.Data;
 using MascotasAPI.Models;
-using BCrypt.Net;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -26,6 +25,12 @@ namespace MascotasAPI.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] Usuario usuario)
         {
+            // Validar campos requeridos
+            if (string.IsNullOrEmpty(usuario.Nombre) || string.IsNullOrEmpty(usuario.Email) || string.IsNullOrEmpty(usuario.PasswordHash))
+            {
+                return BadRequest("Todos los campos son obligatorios: Nombre, Email y Contraseña.");
+            }
+
             // Verificar si el usuario ya existe
             if (_context.Usuarios.Any(u => u.Email == usuario.Email))
             {
@@ -64,8 +69,8 @@ namespace MascotasAPI.Controllers
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Issuer = _configuration["Jwt:Issuer"], // Agregado
-                Audience = _configuration["Jwt:Audience"] // Agregado
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"]
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
